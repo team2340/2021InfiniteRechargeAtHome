@@ -18,7 +18,7 @@ public class AutoDriveForward extends Command {
 	double desiredSpot = 0;
 	double range = .05;
 	Boolean leftDone, rightDone;
-	double desiredLeft, desiredRight;
+	double desiredLeft, desiredRight; 
 
 
 
