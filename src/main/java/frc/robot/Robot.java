@@ -33,7 +33,6 @@ import frc.robot.subsystems.AcquisitionSubsystem;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.DumpingSubsystem;
-import frc.robot.subsystems.SomethingSubsystem;
 
 public class Robot extends TimedRobot {
   public static final OI oi = new OI();
@@ -41,7 +40,6 @@ public class Robot extends TimedRobot {
   public static AcquisitionSubsystem acquisition = null;
   public static DumpingSubsystem dumping = null;
   public static ClimbSubsystem climb = null;
-  public static SomethingSubsystem something = null;
   //public static final DebugLogger myLogger = new DebugLogger();
   public static SendableChooser<Integer> judgesTargetColor = new SendableChooser<Integer>();
   SendableChooser<AutoMode> autoMode = new SendableChooser<AutoMode>();
@@ -85,8 +83,6 @@ public class Robot extends TimedRobot {
     //dumping = DumpingSubsystem.getInstance();
     //acquisition = AcquisitionSubsystem.getInstance();
     climb = new ClimbSubsystem();
-
-    something = new SomethingSubsystem();
 
         // Binds the ColorSensorPositionCommand to be scheduled when the button3 of the joystick is pressed
         //When button 3 is pressed again, the ColorSensorPositionCommand would stop.
