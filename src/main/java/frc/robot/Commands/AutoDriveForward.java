@@ -1,8 +1,7 @@
 package frc.robot.Commands;
 
 import frc.robot.Robot;
-import frc.robot.RobotUtils;
-
+import frc.robot.Utilities.RobotUtils;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,7 +18,7 @@ public class AutoDriveForward extends Command {
 	public AutoDriveForward(double howFar /*unit: inches*/ ) {
 		System.out.println("distance " + distance);
 		requires(Robot.drive);
-		distance = howFar/*-(.5*RobotUtils.getLengthOfRobot())*/;
+		distance = howFar;
 		SmartDashboard.putNumber("distance ", distance);
 		desiredSpot = distance;
 
@@ -52,8 +51,6 @@ public class AutoDriveForward extends Command {
 	protected void execute() {
 		double leftPos = Robot.drive.currentPositionLeftWheel();
 		double rightPos = Robot.drive.currentPositionRightWheel();
-		//		int leftErr = Math.abs(Robot.oi.left.getClosedLoopError(0));
-		//		int rightErr = Math.abs(Robot.oi.right.getClosedLoopError(0));
 
 		//double range = 50; //Might be wrong, trying to fix drive
 		SmartDashboard.putNumber("Current angle: ", Robot.gyro.getAngle());

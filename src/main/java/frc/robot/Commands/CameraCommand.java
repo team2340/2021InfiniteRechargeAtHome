@@ -11,12 +11,10 @@ public class CameraCommand extends Command {
 
 	@Override
 	protected void initialize() {
-	
 	}
 
 	public CameraCommand() {
         server = CameraServer.getInstance().getServer();
-
 	}
 
 	@Override
