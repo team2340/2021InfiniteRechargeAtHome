@@ -3,27 +3,19 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.OI;
 
 public class UptakeSubsystem extends Subsystem {
-    static private UptakeSubsystem subsystem;
+    WPI_TalonSRX uptake = null;
 
     private UptakeSubsystem() {
         create();
 	}
 
-    public static UptakeSubsystem getInstance() {
-		if (subsystem == null) {
-			subsystem = new UptakeSubsystem();
-		}
-		return subsystem;
-    }
-
 	private void create() {
 		try {
-			Robot.oi.uptake = new WPI_TalonSRX(RobotMap.UPTAKE_TAL_ID);//change to new talon
-			Robot.oi.uptake.setSensorPhase(true);
+			uptake = new WPI_TalonSRX(OI.UPTAKE_TAL_ID);//change to new talon
+			uptake.setSensorPhase(true);
 		} catch (Exception ex) {
 			System.out.println("createUptake FAILED");
 		}
@@ -31,13 +23,13 @@ public class UptakeSubsystem extends Subsystem {
 
     
     public void uptakeForward(double speed){
-        Robot.oi.uptake.set(speed);
+        uptake.set(speed);
     }
 
    
  
     public void uptakeStop(){
-        Robot.oi.uptake.set(0);
+        uptake.set(0);
     }
 
 
