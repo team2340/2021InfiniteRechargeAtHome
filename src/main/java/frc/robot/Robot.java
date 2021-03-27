@@ -8,44 +8,30 @@
 package frc.robot;
 
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.RobotUtils.AutoMode;
-import frc.robot.Commands.AcquisitionCommand;
-import frc.robot.Commands.AcquisitionReverseCommand;
 import frc.robot.Commands.AutoDriveForward;
-import frc.robot.Commands.AutoDumpingCommand;
-import frc.robot.Commands.CameraCommand;
-import frc.robot.Commands.ClimbCommand;
-import frc.robot.Commands.DumpingCommand;
-import frc.robot.Commands.DumpingReverseCommand;
-import frc.robot.Commands.DumpingSlowCommand;
 import frc.robot.Commands.Rotation;
-import frc.robot.subsystems.AcquisitionSubsystem;
-import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.DumpingSubsystem;
 
 public class Robot extends TimedRobot {
   public static final OI oi = new OI();
   public static DriveSubsystem drive = null;
-  public static AcquisitionSubsystem acquisition = null;
-  public static DumpingSubsystem dumping = null;
-  public static ClimbSubsystem climb = null;
   //public static final DebugLogger myLogger = new DebugLogger();
   public static SendableChooser<Integer> judgesTargetColor = new SendableChooser<Integer>();
   SendableChooser<AutoMode> autoMode = new SendableChooser<AutoMode>();
   CommandGroup autonomousCommand = null;
   public static UsbCamera camera1;
   public static UsbCamera camera2;
+  public static ADXRS450_Gyro gyro = null;
+  public static Joystick driveController = new Joystick(OI.DRIVE_PORT);
+	public static Joystick acquisitionController = new Joystick(OI.ACQUISITION_PORT);
 
   /**
    * This function is run when the robot is first started up and should be
@@ -76,22 +62,19 @@ public class Robot extends TimedRobot {
     RobotUtils.lengthOfRobot(30.25);
     RobotUtils.widthOfRobot(37);
     RobotUtils.setWheelDiameter(4);
-    oi.gyro = new ADXRS450_Gyro();
+    gyro = new ADXRS450_Gyro();
     //TODO: Joy needs check: FRC says it creates an ADXRS450_Gyro object on the MXP SPI port
     //Gyro gyro = new ADXRS450_Gyro(/*SPI.Port.kMXP*/);
     drive = new DriveSubsystem();
-    //dumping = DumpingSubsystem.getInstance();
-    //acquisition = AcquisitionSubsystem.getInstance();
-    climb = new ClimbSubsystem();
 
         // Binds the ColorSensorPositionCommand to be scheduled when the button3 of the joystick is pressed
         //When button 3 is pressed again, the ColorSensorPositionCommand would stop.
-    JoystickButton driveButton3 = new JoystickButton(oi.driveController, RobotMap.BUTTON_3);
+    // JoystickButton driveButton3 = new JoystickButton(oi.driveController, RobotMap.BUTTON_3);
 
-    JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
+    // JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
 
     //JoystickButton acqButton5 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_5);
-    driveButton3.whileHeld(new ClimbCommand());
+    // driveButton3.whileHeld(new ClimbCommand());
 /*
     JoystickButton acqButton3 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_3);
     acqButton3.whileHeld(new AcquisitionReverseCommand());

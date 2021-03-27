@@ -1,38 +1,28 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.revrobotics.CANSparkMax;
-
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Joystick;
-
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command  groups that allow control of the robot.
- */
 public class OI {
-	public Joystick driveController = new Joystick(RobotMap.DRIVE_PORT);
-	public Joystick acquisitionController = new Joystick(RobotMap.ACQUISITION_PORT);
-	public ADXRS450_Gyro gyro = null;
+//magic numbers~~
+	public static final int BUTTON_1 = 1;
+	public static final int BUTTON_2 = 2; 
+	public static final int BUTTON_3 = 3;
+	public static final int BUTTON_4 = 4;
+	public static final int BUTTON_5 = 5;
+	public static final int BUTTON_6 = 6;
+	public static final int BUTTON_7 = 7;
 
-	public WPI_TalonSRX acquisition = null;
-	public CANSparkMax controlPanel = null;
-	public WPI_TalonSRX dumping = null;
-	// public CANSparkMax elevator1 = null;
-	public WPI_TalonSRX climb1 = null;
-	public WPI_TalonSRX climb2 = null;
-
-	public WPI_TalonSRX frontRight = null;
-	public WPI_TalonSRX frontLeft = null;
-	// public WPI_TalonSRX arm = null;
+/*Controller Ports*/
+	public static final int DRIVE_PORT = 1;
+	public static final int ACQUISITION_PORT = 2;
 	
+/*CAN IDs*/
+	//Wheel Ids
+	public static final int BACK_RIGHT_TAL_ID = 55;
+	public static final int BACK_LEFT_TAL_ID = 11;
+
+	// Talon ids
+	public static final int FRONT_RIGHT_TAL_ID = 5;
+	public static final int FRONT_LEFT_TAL_ID = 9;
+
 	public final double CAM_VIEWING_ANGLE = 61.0;
 	public final double IMG_WIDTH = 160.0;
 	public final double IMG_HEIGHT = 120.0;

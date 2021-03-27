@@ -1,17 +1,14 @@
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
+import frc.robot.OI;
 import frc.robot.Commands.ArcadeDriveCommand;
 
-import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.ControlType;
-import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -42,8 +39,8 @@ public class DriveSubsystem extends Subsystem {
 		//createRightSide();
 //		setBrakeMode(true);
 		// initialize motor
-		backRight = new CANSparkMax(55, MotorType.kBrushless);
-		backLeft = new CANSparkMax(11, MotorType.kBrushless);
+		backRight = new CANSparkMax(OI.BACK_RIGHT_TAL_ID, MotorType.kBrushless);
+		backLeft = new CANSparkMax(OI.BACK_LEFT_TAL_ID, MotorType.kBrushless);
 	
 		/**
 		 * The restoreFactoryDefaults method can be used to reset the configuration parameters
@@ -104,9 +101,6 @@ public class DriveSubsystem extends Subsystem {
 		robotDrive.setSafetyEnabled(false);
 	}
 
-
-	
-	
 	public void setArcadeSpeed(double x, double y){
 		robotDrive.arcadeDrive(-y, x);
 	}
@@ -118,7 +112,6 @@ public class DriveSubsystem extends Subsystem {
 	public void goToDesiredPosition(double desiredPosition){
 		pidControllerLeftWheel.setReference(-desiredPosition + currentPositionLeftWheel() , ControlType.kPosition);
 		pidControllerRightWheel.setReference(desiredPosition + currentPositionRightWheel() , ControlType.kPosition);
-		
 	}
 
 	public double currentPositionRightWheel()

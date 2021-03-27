@@ -2,8 +2,6 @@ package frc.robot.Commands;
 
 import frc.robot.Robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,9 +21,9 @@ public class Rotation extends Command {
 	protected void initialize() {
 		startTime = System.currentTimeMillis();
 		// Robot.drive.setForSpeed();
-		SmartDashboard.putNumber("Current angle: ", Robot.oi.gyro.getAngle());
-		turnAngle = desiredAngle - Robot.oi.gyro.getAngle();
-		Robot.oi.gyro.reset();
+		SmartDashboard.putNumber("Current angle: ", Robot.gyro.getAngle());
+		turnAngle = desiredAngle - Robot.gyro.getAngle();
+		Robot.gyro.reset();
 		if (turnAngle > 0) {
 			rotateRight = true;
 		}
@@ -37,7 +35,7 @@ public class Rotation extends Command {
 	
 	@Override
 	protected void execute() {
-		angle = Math.abs(Robot.oi.gyro.getAngle());
+		angle = Math.abs(Robot.gyro.getAngle());
 		SmartDashboard.putNumber("Gyro angle", angle);
 
 		if (angle >= turnAngle) {
@@ -61,7 +59,7 @@ public class Rotation extends Command {
 		if (angle >= turnAngle) {
 			Robot.drive.rotate(0);
 
-			Robot.oi.gyro.reset();
+			Robot.gyro.reset();
 			return true;
 		}
 		else {

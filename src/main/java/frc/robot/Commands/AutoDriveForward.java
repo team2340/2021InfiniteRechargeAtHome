@@ -3,12 +3,6 @@ package frc.robot.Commands;
 import frc.robot.Robot;
 import frc.robot.RobotUtils;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
-import com.revrobotics.ControlType;
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -37,7 +31,7 @@ public class AutoDriveForward extends Command {
 		leftDone = false;
 		rightDone = false;
 		System.out.println("Initialize");
-		Robot.oi.gyro.reset();
+		Robot.gyro.reset();
 		startTime = System.currentTimeMillis();
 //		double /*go = RobotUtils.distanceMinusRobot*/(distance);
 //		Robot.drive.move(desiredSpot);
@@ -62,7 +56,7 @@ public class AutoDriveForward extends Command {
 		//		int rightErr = Math.abs(Robot.oi.right.getClosedLoopError(0));
 
 		//double range = 50; //Might be wrong, trying to fix drive
-		SmartDashboard.putNumber("Current angle: ", Robot.oi.gyro.getAngle());
+		SmartDashboard.putNumber("Current angle: ", Robot.gyro.getAngle());
 		SmartDashboard.putNumber("left position", Robot.drive.currentPositionLeftWheel());
 		SmartDashboard.putNumber("right position ",Robot.drive.currentPositionRightWheel());
 		
