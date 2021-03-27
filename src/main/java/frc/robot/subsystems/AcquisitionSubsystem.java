@@ -3,26 +3,18 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.OI;
 
 public class AcquisitionSubsystem extends Subsystem {
-    static private AcquisitionSubsystem subsystem;
+    WPI_TalonSRX acquisition = null;
 
     private AcquisitionSubsystem() {
         create();
 	}
 
-    public static AcquisitionSubsystem getInstance() {
-		if (subsystem == null) {
-			subsystem = new AcquisitionSubsystem();
-		}
-		return subsystem;
-    }
-
 	private void create() {
 		try {
-			Robot.oi.acquisition = new WPI_TalonSRX(RobotMap.ACQUISITION_TAL_ID);//change to new talon
+			acquisition = new WPI_TalonSRX(OI.ACQUISITION_TAL_ID);// change to new talon
 			// Robot.oi.frontLeft.setSensorPhase(true);
 		} catch (Exception ex) {
 			System.out.println("createAcquisition FAILED");
@@ -32,15 +24,15 @@ public class AcquisitionSubsystem extends Subsystem {
     
     
     public void acquisitionForward(double speed){
-        Robot.oi.acquisition.set(-speed);
+        acquisition.set(-speed);
     }
 
     public void acquisitionReverse(){
-        Robot.oi.acquisition.set(.5);
+        acquisition.set(.5);
     }
     
     public void acquisitionStop(){
-        Robot.oi.acquisition.set(0);
+        acquisition.set(0);
     }
 
 

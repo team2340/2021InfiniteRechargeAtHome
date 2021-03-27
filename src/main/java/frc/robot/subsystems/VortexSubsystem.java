@@ -3,27 +3,19 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.OI;
 
 public class VortexSubsystem extends Subsystem{
-    static private VortexSubsystem subsystem;
+    WPI_TalonSRX vortex = null;
 
     private VortexSubsystem() {
         create();
     }
 
-    public static VortexSubsystem getInstance() {
-		if (subsystem == null) {
-			subsystem = new VortexSubsystem();
-		}
-		return subsystem;
-    }
-
 	private void create() {
 		try {
-			Robot.oi.vortex = new WPI_TalonSRX(RobotMap.VORTEX_TAL_ID);//change to new talon
-			Robot.oi.vortex.setSensorPhase(true);
+			vortex = new WPI_TalonSRX(OI.VORTEX_TAL_ID);//change to new talon
+			vortex.setSensorPhase(true);
 		} catch (Exception ex) {
 			System.out.println("createVortex FAILED");
 		}
@@ -31,13 +23,13 @@ public class VortexSubsystem extends Subsystem{
 
     
     public void vortexForward(double speed){
-        Robot.oi.vortex.set(speed);
+        vortex.set(speed);
     }
 
    
  
     public void vortexStop(){
-        Robot.oi.vortex.set(0);
+        vortex.set(0);
     }
 
 
