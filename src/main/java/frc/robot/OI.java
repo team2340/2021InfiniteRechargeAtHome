@@ -28,6 +28,9 @@ public class OI {
 	// public CANSparkMax elevator1 = null;
 	public WPI_TalonSRX climb1 = null;
 	public WPI_TalonSRX climb2 = null;
+
+	public WPI_TalonSRX frontRight = null;
+	public WPI_TalonSRX frontLeft = null;
 	// public WPI_TalonSRX arm = null;
 	
 	public final double CAM_VIEWING_ANGLE = 61.0;

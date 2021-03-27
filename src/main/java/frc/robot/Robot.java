@@ -24,6 +24,7 @@ import frc.robot.Commands.AcquisitionReverseCommand;
 import frc.robot.Commands.AutoDriveForward;
 import frc.robot.Commands.AutoDumpingCommand;
 import frc.robot.Commands.CameraCommand;
+import frc.robot.Commands.ClimbCommand;
 import frc.robot.Commands.DumpingCommand;
 import frc.robot.Commands.DumpingReverseCommand;
 import frc.robot.Commands.DumpingSlowCommand;
@@ -32,6 +33,7 @@ import frc.robot.subsystems.AcquisitionSubsystem;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.DumpingSubsystem;
+import frc.robot.subsystems.SomethingSubsystem;
 
 public class Robot extends TimedRobot {
   public static final OI oi = new OI();
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
   public static AcquisitionSubsystem acquisition = null;
   public static DumpingSubsystem dumping = null;
   public static ClimbSubsystem climb = null;
+  public static SomethingSubsystem something = null;
   //public static final DebugLogger myLogger = new DebugLogger();
   public static SendableChooser<Integer> judgesTargetColor = new SendableChooser<Integer>();
   SendableChooser<AutoMode> autoMode = new SendableChooser<AutoMode>();
@@ -81,7 +84,9 @@ public class Robot extends TimedRobot {
     drive = new DriveSubsystem();
     //dumping = DumpingSubsystem.getInstance();
     //acquisition = AcquisitionSubsystem.getInstance();
-    //climb = ClimbSubsystem.getInstance();
+    climb = new ClimbSubsystem();
+
+    something = new SomethingSubsystem();
 
         // Binds the ColorSensorPositionCommand to be scheduled when the button3 of the joystick is pressed
         //When button 3 is pressed again, the ColorSensorPositionCommand would stop.
@@ -89,9 +94,9 @@ public class Robot extends TimedRobot {
 
     JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
 
-   /* JoystickButton acqButton5 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_5);
-    acqButton5.whileHeld(new AcquisitionCommand());
-
+    //JoystickButton acqButton5 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_5);
+    driveButton3.whileHeld(new ClimbCommand());
+/*
     JoystickButton acqButton3 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_3);
     acqButton3.whileHeld(new AcquisitionReverseCommand());
 

@@ -25,11 +25,7 @@ public class ClimbCommand extends Command {
 
 	@Override
 	protected void execute() {
-        double y, z;
-        z = (3 - controller.getThrottle()) / 2;
-        y = -controller.getY() / z;
-
-       Robot.climb.vBus_move(y);
+        Robot.climb.talonTest();
 	}
 
 	@Override
