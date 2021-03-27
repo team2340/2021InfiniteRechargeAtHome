@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.OI;
-import frc.robot.Commands.ArcadeDriveCommand;
+import frc.robot.commands.ArcadeDriveCommand;
 
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;

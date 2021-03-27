@@ -15,11 +15,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Utilities.RobotUtils;
-import frc.robot.Utilities.RobotUtils.AutoMode;
-import frc.robot.Commands.AutoDriveForward;
-import frc.robot.Commands.Rotation;
+import frc.robot.commands.AutoDriveForward;
+import frc.robot.commands.Rotation;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.utilities.RobotUtils;
+import frc.robot.utilities.RobotUtils.AutoMode;
 
 public class Robot extends TimedRobot {
   public static final OI oi = new OI();

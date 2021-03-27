@@ -1,4 +1,4 @@
-package frc.robot.Utilities;
+package frc.robot.utilities;
 
 public class RobotUtils {
 	private static double wheelDiameter = 4;

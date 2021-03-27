@@ -1,7 +1,7 @@
-package frc.robot.Commands;
+package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.Utilities.RobotUtils;
+import frc.robot.utilities.RobotUtils;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
