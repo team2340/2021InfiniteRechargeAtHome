@@ -8,7 +8,7 @@ import frc.robot.OI;
 public class ShootingSubsystem extends Subsystem {
     WPI_TalonSRX shooting = null;
 
-    private ShootingSubsystem() {
+    public ShootingSubsystem() {
         create();
 	}
 

@@ -8,7 +8,7 @@ import frc.robot.OI;
 public class VortexSubsystem extends Subsystem{
     WPI_TalonSRX vortex = null;
 
-    private VortexSubsystem() {
+    public VortexSubsystem() {
         create();
     }
 

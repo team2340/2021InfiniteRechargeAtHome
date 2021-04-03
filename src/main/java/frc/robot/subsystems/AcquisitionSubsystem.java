@@ -8,7 +8,7 @@ import frc.robot.OI;
 public class AcquisitionSubsystem extends Subsystem {
     WPI_TalonSRX acquisition = null;
 
-    private AcquisitionSubsystem() {
+    public AcquisitionSubsystem() {
         create();
 	}
 

@@ -8,7 +8,7 @@ import frc.robot.OI;
 public class UptakeSubsystem extends Subsystem {
     WPI_TalonSRX uptake = null;
 
-    private UptakeSubsystem() {
+    public UptakeSubsystem() {
         create();
 	}
 

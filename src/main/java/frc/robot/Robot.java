@@ -11,13 +11,21 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.AcquisitionCommand;
 import frc.robot.commands.AutoDriveForward;
 import frc.robot.commands.Rotation;
+import frc.robot.commands.UptakeShootCommand;
+import frc.robot.commands.VortexCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.VortexSubsystem;
+import frc.robot.subsystems.AcquisitionSubsystem;
+import frc.robot.subsystems.ShootingSubsystem;
+import frc.robot.subsystems.UptakeSubsystem;
 import frc.robot.utilities.RobotUtils;
 import frc.robot.utilities.RobotUtils.AutoMode;
 
@@ -25,6 +33,11 @@ import frc.robot.utilities.RobotUtils.AutoMode;
 public class Robot extends TimedRobot {
   public static final OI oi = new OI();
   public static DriveSubsystem drive = null;
+  public static VortexSubsystem vortex = null;
+  public static UptakeSubsystem uptake = null;
+  public static ShootingSubsystem shooting = null;
+  public static AcquisitionSubsystem acquisition = null;
+
   //public static final DebugLogger myLogger = new DebugLogger();
   public static SendableChooser<Integer> judgesTargetColor = new SendableChooser<Integer>();
   SendableChooser<AutoMode> autoMode = new SendableChooser<AutoMode>();
@@ -68,6 +81,11 @@ public class Robot extends TimedRobot {
     //TODO: Joy needs check: FRC says it creates an ADXRS450_Gyro object on the MXP SPI port
     //Gyro gyro = new ADXRS450_Gyro(/*SPI.Port.kMXP*/);
     drive = new DriveSubsystem();
+    uptake = new UptakeSubsystem();
+    acquisition = new AcquisitionSubsystem();
+    shooting = new ShootingSubsystem();
+    vortex = new VortexSubsystem();
+
 
         // Binds the ColorSensorPositionCommand to be scheduled when the button3 of the joystick is pressed
         //When button 3 is pressed again, the ColorSensorPositionCommand would stop.
@@ -75,8 +93,20 @@ public class Robot extends TimedRobot {
 
     // JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
 
-    //JoystickButton acqButton5 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_5);
-    // driveButton3.whileHeld(new ClimbCommand());
+    JoystickButton acqButton5 = new JoystickButton(acquisitionController, OI.BUTTON_5);
+     acqButton5.whileHeld(new VortexCommand(1));
+
+     JoystickButton acqButton4 = new JoystickButton(acquisitionController, OI.BUTTON_4);
+     acqButton4.whileHeld(new VortexCommand(-1));
+
+     JoystickButton acqButton3 = new JoystickButton(acquisitionController, OI.BUTTON_3);
+     acqButton3.whileHeld(new AcquisitionCommand(1));
+
+     JoystickButton acqButton2 = new JoystickButton(acquisitionController, OI.BUTTON_2);
+     acqButton2.whileHeld(new AcquisitionCommand(-1));
+
+     JoystickButton acqButton1 = new JoystickButton(acquisitionController, OI.BUTTON_1);
+     acqButton1.whileHeld(new UptakeShootCommand());
 /*
     JoystickButton acqButton3 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_3);
     acqButton3.whileHeld(new AcquisitionReverseCommand());
