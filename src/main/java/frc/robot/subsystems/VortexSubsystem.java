@@ -1,12 +1,14 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 
 public class VortexSubsystem extends Subsystem{
-    WPI_TalonSRX vortex = null;
+    CANSparkMax vortex = null;
 
     public VortexSubsystem() {
         create();
@@ -14,8 +16,7 @@ public class VortexSubsystem extends Subsystem{
 
 	private void create() {
 		try {
-			vortex = new WPI_TalonSRX(OI.VORTEX_TAL_ID);//change to new talon
-			vortex.setSensorPhase(true);
+            vortex = new CANSparkMax(OI.VORTEX_TAL_ID, MotorType.kBrushless);
 		} catch (Exception ex) {
 			System.out.println("createVortex FAILED");
 		}

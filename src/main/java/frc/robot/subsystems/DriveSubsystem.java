@@ -58,7 +58,7 @@ public class DriveSubsystem extends Subsystem {
 		pidControllerLeftWheel = backLeft.getPIDController();
 		pidControllerRightWheel = backRight.getPIDController();
 	
-		// Encoder object created to display position values
+		// Encoder object created to display positifon values
 		encoderOne = backLeft.getEncoder();
 		encoderTwo = backRight.getEncoder();
 	

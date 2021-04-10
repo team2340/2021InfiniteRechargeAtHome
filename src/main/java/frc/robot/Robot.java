@@ -94,10 +94,10 @@ public class Robot extends TimedRobot {
     // JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
 
     JoystickButton acqButton5 = new JoystickButton(acquisitionController, OI.BUTTON_5);
-     acqButton5.whileHeld(new VortexCommand(1));
+     acqButton5.whileHeld(new VortexCommand(.2));
 
      JoystickButton acqButton4 = new JoystickButton(acquisitionController, OI.BUTTON_4);
-     acqButton4.whileHeld(new VortexCommand(-1));
+     acqButton4.whileHeld(new VortexCommand(-.2));
 
      JoystickButton acqButton3 = new JoystickButton(acquisitionController, OI.BUTTON_3);
      acqButton3.whileHeld(new AcquisitionCommand(1));

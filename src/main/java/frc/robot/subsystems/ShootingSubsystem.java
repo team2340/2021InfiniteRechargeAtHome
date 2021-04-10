@@ -1,12 +1,14 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 
 public class ShootingSubsystem extends Subsystem {
-    WPI_TalonSRX shooting = null;
+    WPI_TalonSRX shootingRight = null;
+    WPI_TalonSRX shootingLeft = null;
 
     public ShootingSubsystem() {
         create();
@@ -14,8 +16,8 @@ public class ShootingSubsystem extends Subsystem {
 
 	private void create() {
 		try {
-			shooting = new WPI_TalonSRX(OI.SHOOTING_TAL_ID);//change to new talon
-			shooting.setSensorPhase(true);
+			shootingRight = new WPI_TalonSRX(OI.SHOOTING_RIGHT_TAL_ID);//change to new talon
+            shootingLeft = new WPI_TalonSRX(OI.SHOOTING_LEFT_TAL_ID);
 		} catch (Exception ex) {
 			System.out.println("createDumping FAILED");
 		}
@@ -23,13 +25,15 @@ public class ShootingSubsystem extends Subsystem {
 
     
     public void shootingForward(double speed){
-        shooting.set(speed);
+        shootingRight.set(speed);
+        shootingLeft.set(-speed);
     }
 
    
  
     public void shootingStop(){
-        shooting.set(0);
+        shootingRight.set(0);
+        shootingLeft.set(0);
     }
 
 

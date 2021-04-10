@@ -20,12 +20,13 @@ public class OI {
 	public static final int BACK_LEFT_TAL_ID = 11;
 
 	// Talon ids
-	public static final int FRONT_RIGHT_TAL_ID = 5;
-	public static final int FRONT_LEFT_TAL_ID = 9;
-	public static final int ACQUISITION_TAL_ID = 0;
-	public static final int SHOOTING_TAL_ID = 0;
-	public static final int UPTAKE_TAL_ID = 0;
-	public static final int VORTEX_TAL_ID = 0;
+	public static final int SHOOTING_RIGHT_TAL_ID = 5;
+	public static final int SHOOTING_LEFT_TAL_ID = 9;
+	public static final int ACQUISITION_TAL_ID = 7;
+	public static final int UPTAKE_TAL_ID = 3;
+	public static final int VORTEX_TAL_ID = 33;
+	public static final int PNEUMATICS_TAL_ID = 1;
+	public static final int SOLENOID_ID = 0;
 
 	public final double CAM_VIEWING_ANGLE = 61.0;
 	public final double IMG_WIDTH = 160.0;
