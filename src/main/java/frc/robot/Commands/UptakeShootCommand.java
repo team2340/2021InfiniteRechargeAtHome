@@ -18,7 +18,7 @@ public class UptakeShootCommand extends Command {
 	@Override
 	protected void execute() {
 		
-		Robot.shooting.shootingForward(0.74/*controller.getZ()*/);
+		Robot.shooting.shootingForward(1);
 		
 		if(startTime <= System.currentTimeMillis() - 3000) {
 			Robot.uptake.uptakeForward(1);

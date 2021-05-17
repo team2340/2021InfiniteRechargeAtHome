@@ -9,6 +9,7 @@ public class OI {
 	public static final int BUTTON_5 = 5;
 	public static final int BUTTON_6 = 6;
 	public static final int BUTTON_7 = 7;
+	public static final int BUTTON_8 = 8;
 
 /*Controller Ports*/
 	public static final int DRIVE_PORT = 1;
@@ -27,6 +28,8 @@ public class OI {
 	public static final int VORTEX_TAL_ID = 33;
 	public static final int PNEUMATICS_TAL_ID = 1;
 	public static final int SOLENOID_ID = 0;
+	public static final int SOLENOID1_ID = 1;
+	public static final int SOLENOID2_ID = 2;
 
 	public final double CAM_VIEWING_ANGLE = 61.0;
 	public final double IMG_WIDTH = 160.0;

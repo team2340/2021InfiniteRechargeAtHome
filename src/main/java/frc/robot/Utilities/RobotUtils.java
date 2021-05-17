@@ -2,6 +2,7 @@ package frc.robot.utilities;
 
 public class RobotUtils {
 	private static double wheelDiameter = 4;
+	public static double vortexDiameter = 13.5;
 	private static double lengthOfRobot = 33;
 	private static double widthOfRobot = 28;
 
@@ -40,5 +41,9 @@ public class RobotUtils {
 
 	public static double getRotationsFromInches(double inches) {
 		return inches / (Math.PI * wheelDiameter);
+	}
+
+	public static double getVortexRotationsFromInches(double inches) {
+		return inches / (Math.PI * vortexDiameter);
 	}
 }

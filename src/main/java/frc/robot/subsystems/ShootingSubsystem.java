@@ -16,8 +16,12 @@ public class ShootingSubsystem extends Subsystem {
 
 	private void create() {
 		try {
-			shootingRight = new WPI_TalonSRX(OI.SHOOTING_RIGHT_TAL_ID);//change to new talon
+            shootingRight = new WPI_TalonSRX(OI.SHOOTING_RIGHT_TAL_ID);
+            shootingRight.configPeakOutputForward(100);
+            shootingRight.configPeakOutputReverse(-100);
             shootingLeft = new WPI_TalonSRX(OI.SHOOTING_LEFT_TAL_ID);
+            shootingLeft.configPeakOutputReverse(-100);
+            shootingLeft.configPeakOutputForward(100);
 		} catch (Exception ex) {
 			System.out.println("createDumping FAILED");
 		}

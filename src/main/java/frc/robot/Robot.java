@@ -18,10 +18,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AcquisitionCommand;
 import frc.robot.commands.AutoDriveForward;
+import frc.robot.commands.PneumaticCommand;
 import frc.robot.commands.Rotation;
 import frc.robot.commands.UptakeShootCommand;
 import frc.robot.commands.VortexCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.PneumaticSubsystem;
 import frc.robot.subsystems.VortexSubsystem;
 import frc.robot.subsystems.AcquisitionSubsystem;
 import frc.robot.subsystems.ShootingSubsystem;
@@ -37,6 +39,8 @@ public class Robot extends TimedRobot {
   public static UptakeSubsystem uptake = null;
   public static ShootingSubsystem shooting = null;
   public static AcquisitionSubsystem acquisition = null;
+  public static PneumaticSubsystem pneumatic = null;
+
 
   //public static final DebugLogger myLogger = new DebugLogger();
   public static SendableChooser<Integer> judgesTargetColor = new SendableChooser<Integer>();
@@ -85,6 +89,7 @@ public class Robot extends TimedRobot {
     acquisition = new AcquisitionSubsystem();
     shooting = new ShootingSubsystem();
     vortex = new VortexSubsystem();
+    pneumatic = new PneumaticSubsystem();
 
 
         // Binds the ColorSensorPositionCommand to be scheduled when the button3 of the joystick is pressed
@@ -94,19 +99,25 @@ public class Robot extends TimedRobot {
     // JoystickButton driveButton4 = new JoystickButton(oi.driveController, RobotMap.BUTTON_4);
 
     JoystickButton acqButton5 = new JoystickButton(acquisitionController, OI.BUTTON_5);
-     acqButton5.whileHeld(new VortexCommand(.2));
-
-     JoystickButton acqButton4 = new JoystickButton(acquisitionController, OI.BUTTON_4);
-     acqButton4.whileHeld(new VortexCommand(-.2));
+     acqButton5.whileHeld(new VortexCommand(.25));//change second parameter
 
      JoystickButton acqButton3 = new JoystickButton(acquisitionController, OI.BUTTON_3);
-     acqButton3.whileHeld(new AcquisitionCommand(1));
+     acqButton3.whileHeld(new VortexCommand(-.25)); //change second parameter
 
-     JoystickButton acqButton2 = new JoystickButton(acquisitionController, OI.BUTTON_2);
-     acqButton2.whileHeld(new AcquisitionCommand(-1));
+     JoystickButton acqButton6 = new JoystickButton(acquisitionController, OI.BUTTON_6);
+     acqButton6.whileHeld(new AcquisitionCommand(.5));
+
+     JoystickButton acqButton4 = new JoystickButton(acquisitionController, OI.BUTTON_4);
+     acqButton4.whileHeld(new AcquisitionCommand(-.5));
 
      JoystickButton acqButton1 = new JoystickButton(acquisitionController, OI.BUTTON_1);
      acqButton1.whileHeld(new UptakeShootCommand());
+
+     JoystickButton acqButton8 = new JoystickButton(acquisitionController, OI.BUTTON_8);
+     acqButton8.whileHeld(new PneumaticCommand(true));
+
+     JoystickButton acqButton7 = new JoystickButton(acquisitionController, OI.BUTTON_7);
+     acqButton7.whileHeld(new PneumaticCommand(false));
 /*
     JoystickButton acqButton3 = new JoystickButton(oi.acquisitionController, RobotMap.BUTTON_3);
     acqButton3.whileHeld(new AcquisitionReverseCommand());
